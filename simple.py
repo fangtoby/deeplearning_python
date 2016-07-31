@@ -1,4 +1,5 @@
 # coding: UTF-8
+#http://blog.csdn.net/zzukun/article/details/49556715
 
 import numpy as np
 
