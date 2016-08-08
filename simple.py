@@ -32,7 +32,8 @@ syn1 = 2*np.random.random((4,1)) - 1
 
 # xrange和range相比，不同点就在于xrange生成的不是一个数组，而是一个生成器
 
-for j in xrange(60000):
+for j in range(60000):
+    
     l1 = 1/(1+np.exp(-(np.dot(X,syn0))))
 	#np.exp(34) e的x次方
     # 矩阵的乘积可以使用dot函数进行计算。对于二维数组，它计算的是矩阵乘积，
