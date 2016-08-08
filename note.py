@@ -17,7 +17,9 @@ np.random.seed(0)
 def sigmoid(x):
     output = 1/(1+np.exp(-x)) #np.exp(34) e的x次方
     return output
-
+#由于神经网络的数学表达形式的特殊性,第2层的导数刚好是在
+#第3层的基础上继续求导的,而第1层的又是第2层的基础上继续
+#求导的,就是这样的反向传播的关系.
 # convert output of sigmoid function to its derivative
 def sigmoid_output_to_derivative(output):
     return output*(1-output)
