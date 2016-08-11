@@ -39,3 +39,51 @@ $cxContext = stream_context_create($opts);
 $sFile = file_get_contents("http://221.178.251.154/my/actionDispatcher.do", false, $cxContext);
 
 echo $sFile;
+
+
+
+
+
+$cookie_file = tempnam('./temp','cookie');
+$login_url  = 'http://service.js.10086.cn/login.html?url=index.html';
+$post_fields = 'userLoginTransferProtocol=https&redirectUrl=index.html&reqUrl=login&busiNum=LOGIN&operType=0&passwordType=1&isSavePasswordVal=0&isSavePasswordVal_N=1&currentD=1&loginFormTab=http&loginType=1&phone-login=on&mobile=18860975543&city=NJDQ&password=880920&verifyCode=';
+$ch = curl_init($login_url);
+curl_setopt($ch, CURLOPT_HEADER, 0);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS, $post_fields);
+curl_setopt($ch, CURLOPT_COOKIEJAR, $cookie_file);
+curl_exec($ch);
+curl_close($ch);
+
+/*
+$data = array(
+    'reqUrl' => "MY_QDCXQueryNew",
+    'busiNum' => "QDCX",
+    'queryMonth' => "201607",
+    'queryItem' => "1",
+    'qryPages'=> "1:1002:-1",
+    'qryNo' =>"1",
+    'operType' =>"3",
+    'queryBeginTime' =>"2016-08-01",
+    'queryEndTime' => "2016-08-10",
+);
+$data = http_build_query($data);
+$opts = array(
+    'http'=>array(
+        'method'=>"POST",
+        'header'=>"Content-type: application/x-www-form-urlencoded\r\n".
+            "Content-length:".strlen($data)."\r\n" .
+            "Host:service.js.10086.cn"."\r\n" .
+            "Origin:http://service.js.10086.cn"."\r\n" .
+            "Referer:http://service.js.10086.cn/my/MY_QDCX.html"."\r\n" .
+            "User-Agent:Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36"."\r\n" .
+            "X-Requested-With:XMLHttpRequest"."\r\n" .
+            "Cookie: ".file_get_contents($cookie_file)."",
+        'content' => $data,
+    )
+);
+$cxContext = stream_context_create($opts);
+$sFile = file_get_contents("http://service.js.10086.cn/my/actionDispatcher.do", false, $cxContext);
+echo $sFile;
+*/
