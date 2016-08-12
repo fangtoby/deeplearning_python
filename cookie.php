@@ -56,6 +56,15 @@ function get_content($url, $cookie,$post,$headerArr) {
     return $rs;
 }
 
+//拼接Header字符串
+function get_header_str($header){
+    $headerArr = array();
+    foreach( $header as $n => $v ) {
+        $headerArr[] = $n .':' . $v;
+    }
+    return $headerArr;
+}
+
 $cookie_file = dirname(__FILE__) . '/cookie.txt';
 $login_url  = 'http://service.js.10086.cn/actionDispatcher.do';
 $get_url = 'http://service.js.10086.cn/my/actionDispatcher.do';
@@ -75,15 +84,14 @@ $post = array(
     "loginFormTab"=>"http",
     "loginType"=>"1",
     "phone-login"=>"on",
-    "mobile"=>"xxx",//手机号码
+    "mobile"=>"xxx",
     "city"=>"NJDQ",
-    "password"=>"xxx",//密码
+    "password"=>"xxx",
     "verifyCode"=>"",
 );
 
 $header = array(
     "Accept"=>"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-    "Accept-Encoding"=>"gzip, deflate",
     "Accept-Language"=>"en-US,en;q=0.8,zh-CN;q=0.6,zh;q=0.4,af;q=0.2,zh-TW;q=0.2,ja;q=0.2",
     "Cache-Control"=>"max-age=0",
     "Connection"=>"keep-alive",
@@ -98,12 +106,9 @@ $header = array(
     "X-FORWARDED-FOR" => "".$ip."",
 );
 
-$headerArr = array();
+$headerStr = get_header_str($header);
 
-foreach( $header as $n => $v ) {
-    $headerArr[] = $n .':' . $v;
-}
-login_post($login_url, $cookie_file, $post,$header);
+login_post($login_url, $cookie_file, $post,$headerStr);
 
 $data = array(
     'reqUrl' => "MY_QDCXQueryNew",
@@ -131,13 +136,9 @@ $header = array(
     "X-FORWARDED-FOR" => "".$ip."",
 );
 
-$headerArr = array();
+$headerStr = get_header_str($header);
 
-foreach( $header as $n => $v ) {
-    $headerArr[] = $n .':' . $v;
-}
-
-echo get_content($get_url,$cookie_file,$data,$headerArr);
+echo get_content($get_url,$cookie_file,$data,$headerStr);
 
 
 
