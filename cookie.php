@@ -113,6 +113,12 @@ function get_phone_servers($id){
 }
 
 $cookie_file = dirname(__FILE__) . '/cookie.txt';
+
+if(!file_exists($cookie_file)){	    //如果文件不存在（默认为当前目录下）
+    $fh = fopen($cookie_file,"w");
+    fclose($fh);		    //关闭文件
+}
+
 $login_url  = 'http://service.js.10086.cn/actionDispatcher.do';
 $get_url = 'http://service.js.10086.cn/my/actionDispatcher.do';
 
