@@ -65,6 +65,53 @@ function get_header_str($header){
     return $headerArr;
 }
 
+/*
+ * 判断是否是正确的手机号，以及手机的运营商
+ * @param {String} num
+ *
+ * 返回值:
+ *      0 不是手机号码
+ *      1 移动
+ *      2 联通
+ *      3 电信
+ *      4 不确定
+ */
+function isPhoneNum($num) {
+    $lag = 0;
+    $phoneRe = '/^1\d{10}$/';
+    $dx = [133,153,180,181,189]; /*电信*/
+    $lt = [130,131,132,145,155,156,185,186];/*联通*/
+    $yd = [134,135,136,137,138,139,147,150,151,152,157,158,159,182,183,184,187,188];/*移动*/
+
+
+    if(preg_match($phoneRe,$num)){
+        $temp = substr($num , 0 , 3);
+        if(inArray($temp,$yd)) return 1;
+        if(inArray($temp,$lt)) return 2;
+        if(inArray($temp,$dx)) return 3;
+        return 4;
+    }
+    return flag;
+}
+
+function inArray($val,$arr){
+    for($i=0;$i<count($arr);$i++){
+        if($val == $arr[$i]) return true;
+    }
+    return false;
+}
+
+function get_phone_servers($id){
+    $arr = [
+        '格式错误',//0
+        '移动',//1
+        '联通',//2
+        '电信',//3
+        '没有服务'//4
+    ];
+    return $arr[$id];
+}
+
 $cookie_file = dirname(__FILE__) . '/cookie.txt';
 $login_url  = 'http://service.js.10086.cn/actionDispatcher.do';
 $get_url = 'http://service.js.10086.cn/my/actionDispatcher.do';
@@ -99,7 +146,7 @@ $header = array(
     "Cookie"=>"yjcxFlag=1; WTCX_MY_ZHYEJYXQ=MY_ZHYEJYXQ+1470798252502; nulluserQuitCountMonthALL7=1; forwardActSmqllNew=1; WTCX_MY_INDEX=MY_INDEX+1470823491725; WTCX_MY_WDTC=MY_WDTC+1470824456082; 18860975543userQuitCountMonthALL7=1; last_success_login_mobile=18860975543; WTCX_MY_QDCX=MY_QDCX+1470826259321; city=NTDQ; CmLocation=250|250; onedayonetime=1; AlteonP=AuT2I2ddqMBRw+4tKqMIDg$$; JSESSIONID=ydxQXtGF20RGqB1Yg9xmvKQlywqHxTJklLtNpwBHwGZqwF74nPRQ!758079959; topUserMobile=; CmProvid=js; WT_FPC=id=2d7388b25365f5f5dcf1470797470989:lv=1470989494378:ss=1470989479135; login_error_number_https=18860975543; login_error_loginType_https=1; login_error_passwordType_https=1",
     "Host"=>"service.js.10086.cn",
     "Origin"=>"http://service.js.10086.cn",
-    "Referer"=>"http://service.js.10086.cn/login.html?url=index.html",
+    "Referer"=>"http://service.js.10086.cn/login.html?url=index.html",//登陆之后跳转
     "Upgrade-Insecure-Requests"=>"1",
     "User-Agent"=>"Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.106 Safari/537.36",
     "CLIENT-IP" => "".$ip."",
