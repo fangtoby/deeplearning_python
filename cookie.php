@@ -161,18 +161,21 @@ $header = array(
 
 $headerStr = get_header_str($header);
 
+//清除返回跳转页面
+ob_start();
 login_post($login_url, $cookie_file, $post,$headerStr);
+ob_end_clean();
 
 $data = array(
     'reqUrl' => "MY_QDCXQueryNew",
     'busiNum' => "QDCX",
-    'queryMonth' => "201607",
+    'queryMonth' => "201606",
     'queryItem' => "1",
     'qryPages'=> "1:1002:-1",
     'qryNo' =>"1",
     'operType' =>"3",
-    'queryBeginTime' =>"2016-08-01",
-    'queryEndTime' => "2016-08-10",
+    'queryBeginTime' =>"2016-06-01",
+    'queryEndTime' => "2016-06-30",
 );
 
 $header = array(
@@ -192,6 +195,5 @@ $header = array(
 $headerStr = get_header_str($header);
 
 echo get_content($get_url,$cookie_file,$data,$headerStr);
-
 
 

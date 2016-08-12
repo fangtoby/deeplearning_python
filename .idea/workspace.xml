@@ -28,7 +28,7 @@
       <file leaf-file-name="cookie.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cookie.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="491">
+            <state relative-caret-position="225">
               <caret line="141" column="20" selection-start-line="141" selection-start-column="20" selection-end-line="141" selection-end-column="20" />
               <folding>
                 <element signature="e#6#113#0#PHP" expanded="true" />
@@ -169,12 +169,12 @@
       <updated>1470800479764</updated>
       <workItem from="1470800481229" duration="1085000" />
       <workItem from="1470989143437" duration="468000" />
-      <workItem from="1470991126465" duration="2797000" />
+      <workItem from="1470991126465" duration="3412000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4350000" />
+    <option name="totallyTimeSpent" value="4965000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1216" extended-state="6" />
@@ -237,7 +237,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/cookie.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="491">
+        <state relative-caret-position="225">
           <caret line="141" column="20" selection-start-line="141" selection-start-column="20" selection-end-line="141" selection-end-column="20" />
           <folding>
             <element signature="e#6#113#0#PHP" expanded="true" />
