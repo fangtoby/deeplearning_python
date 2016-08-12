@@ -75,9 +75,9 @@ $post = array(
     "loginFormTab"=>"http",
     "loginType"=>"1",
     "phone-login"=>"on",
-    "mobile"=>"18860975543",
+    "mobile"=>"xxx",//手机号码
     "city"=>"NJDQ",
-    "password"=>"880920",
+    "password"=>"xxx",//密码
     "verifyCode"=>"",
 );
 
